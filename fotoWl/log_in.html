@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background-color: #121212;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background: #222;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(255, 215, 0, 0.3);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeIn 0.5s forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .login-container h2 {
+            font-size: 2rem;
+            color: gold;
+            margin-bottom: 20px;
+        }
+        .login-container input {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+        }
+        .login-btn {
+            background: gold;
+            color: black;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: background 0.3s, color 0.3s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .login-btn:hover {
+            background: orange;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="./index.html">
+            <input type="text" placeholder="Username">
+        <input type="password" placeholder="Password">
+        <button class="login-btn">Login</button>
+        </form>
+    </div>
+</body>
+</html>

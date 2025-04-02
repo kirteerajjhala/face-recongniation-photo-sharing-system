@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition Photo Sharing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background-color: #121212;
+            color: white;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #000;
+            box-shadow: 0px 4px 10px rgba(255, 215, 0, 0.2);
+            position: relative;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: gold;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        nav {
+            position: relative;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 1.2rem;
+        }
+        nav ul li a:hover {
+            color: gold;
+        }
+        .login-btn {
+            background: gold;
+            color: black;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: background 0.3s, color 0.3s;
+        }
+        .login-btn:hover {
+            background: orange;
+            color: white;
+        }
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            color: gold;
+        }
+        .hero h2 {
+            font-size: 2.5rem;
+        }
+        .hero p {
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+        .start-btn {
+            background: linear-gradient(45deg, gold, orange);
+            color: black;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            margin-top: 30px;
+            border-radius: 40px;
+            box-shadow: 0px 8px 20px rgba(255, 165, 0, 0.6);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .start-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 12px 25px rgba(255, 165, 0, 0.9);
+        }
+        .how-it-works {
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .how-it-works h2 {
+            font-size: 2.5rem;
+            color: gold;
+        }
+        .steps {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        .step {
+            background: #222;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 350px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 10px 20px rgba(255, 215, 0, 0.5);
+        }
+        .step h3 {
+            font-size: 1.5rem;
+            color: gold;
+        }
+        .step p {
+            font-size: 1rem;
+        }
+        @media (max-width: 768px) {
+            header {
+                padding: 20px;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 10px;
+                background: #000;
+                width: 220px;
+                padding: 12px;
+                border-radius: 10px;
+                box-shadow: 0px 4px 10px rgba(255, 215, 0, 0.2);
+            }
+            nav ul.active {
+                display: flex;
+            }
+            nav ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+            .start-btn {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+        }
+
+
+
+        .login-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #222;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 10px 20px rgba(255, 215, 0, 0.5);
+            transition: all 0.3s ease-in-out;
+            text-align: center;
+        }
+        .login-container h2 {
+            color: gold;
+            margin-bottom: 20px;
+        }
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        .login-container button {
+            background: gold;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background: orange;
+            color: white;
+        }
+        .how-it-works {
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .how-it-works h2 {
+            font-size: 2.5rem;
+            color: gold;
+        }
+        .steps {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        .step {
+            background: #222;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 350px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 10px 20px rgba(255, 215, 0, 0.5);
+        }
+        .step h3 {
+            font-size: 1.5rem;
+            color: gold;
+        }
+        .step p {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Face Recognition Photo Sharing</div>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#examples">Examples</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="log_in.html" class="login-btn" onclick="showLogin()">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+        <h1>Media Asset Management</h1>
+        <h2>FOR EVENTS</h2>
+        <p>Engage with your clients by sharing event photos via Face Recognition. Create Portfolio and Collaborate with clients for photo selection</p>
+        <button class="start-btn">Start FREE</button>
+    </section>
+    <section class="how-it-works" id="how-it-works">
+        <h2>HOW IT WORKS</h2>
+        <div class="steps">
+            <div class="step"><h3>STEP 1</h3><p>Upload Photos and Share gallery link with attendees</p></div>
+            <div class="step"><h3>STEP 2</h3><p>Attendees will click a selfie and enter basic details</p></div>
+            <div class="step"><h3>STEP 3</h3><p>And BOOM!!! They will get all photos within seconds</p></div>
+        </div>
+    </section>
+
+    <div class="login-container" id="login-container">
+      <h2>Log   in</h2>
+      <input type="text" placeholder="Username">
+      <input type="password" placeholder="Password">
+      <button><a href="log_in.html">Log in</a></button>
+  </div>
+    <script>
+        function toggleMenu() {
+            document.getElementById("nav-menu").classList.toggle("active");
+        }
+       
+    </script>
+</body>
+</html>
